@@ -1,6 +1,6 @@
 > -   原文地址：[What is End-to-End Testing and When Should You Use It?](https://www.freecodecamp.org/news/end-to-end-testing-tutorial/)
 > -   原文作者：Stan Georgian
-> -   译者：
+> -   译者：AbbetWang
 > -   校对者：
 
 ![What is End-to-End Testing and When Should You Use It?](https://www.freecodecamp.org/news/content/images/size/w2000/2021/03/iam_os-Gr7q7kqfnVU-unsplash.jpg)
