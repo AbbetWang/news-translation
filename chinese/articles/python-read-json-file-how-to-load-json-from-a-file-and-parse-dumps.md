@@ -1,49 +1,75 @@
 > -  原文地址：[Python Read JSON File – How to Load JSON from a File and Parse Dumps](https://www.freecodecamp.org/news/python-read-json-file-how-to-load-json-from-a-file-and-parse-dumps/)
 > -  原文作者：[Estefania Cassingena Navone](https://www.freecodecamp.org/news/author/estefaniacn/)
-> -  译者：
+> -  译者：Abbet
 > -  校对者：
 
 ![Python Read JSON File – How to Load JSON from a File and Parse Dumps](https://www.freecodecamp.org/news/content/images/size/w2000/2020/08/Read-JSON-image.png)
-
+欢迎！如果你想学习如何使用Python操作json文件,那么这篇文章就是为你写的。
 Welcome! If you want to learn how to work with JSON files in Python, then this article is for you.
+
+**你将学到**
 
 **You will learn:**
 
+-	为什么JSON格式如此重要。
 -   Why the JSON format is so important.
+-	JSON的基本格式和数据类型。
 -   Its basic structure and data types.
+-	JSON数据和Python字典是如何在Python中工作的。
 -   How JSON and Python Dictionaries work together in Python.
+-	如何使用Python内置的json模块
 -   How to work with the Python built-in  `json` module.
+-	如何把JSON字符串转换成Python对象，（反之亦然）
 -   How to convert JSON strings to Python objects and vice versa.
+-	如何使用`loads()`和`dumps()`
 -   How to use `loads()` and `dumps()`
+-	如何自动缩进JSON字符串。
 -   How to indent JSON strings automatically.
+-	在Python中，如何使用`load()`读取JSON文件。
 -   How to read JSON files in Python using `load()`
+-	在Python中，如何使用`dump()`写JSON文件。
 -   How to write to JSON files in Python using `dump()`
+-	其他！
 -   And more!
 
+准备好了吗？出发✨
+
 Are you ready? Let's begin! ✨
+
+## 🔹 介绍：JSON是什么？
 
 ## 🔹 Introduction: What is JSON?
 
 ![](https://www.freecodecamp.org/news/content/images/2020/10/image-98.png)
 
+JSON格式起源于JavaScript语法。之后发展成了了一种**语言无关的数据格式**，并且大多数现代编程语言都可以操作和读取JSON。
 The JSON format was originally inspired by the syntax of JavaScript (a programming language used for web development). But since then it has become a **language-independent data format** and most of the programming languages that we use today can generate and read JSON.
+
+### JSON的重要性和使用场景
 
 ### Importance and Use Cases of JSON
 
+JSON是存储和展示数据的一种基本格式。常见于web开发和配置文件中。
 JSON is basically a format used to store or represent data. Its common use cases include web development and configuration files.
 
+这是为什么呢？
 Let's see why:
 
+-	**Web开发：** 在Web开发过程中，JSON常常用于客户端和服务端之间传输数据。
 -   **Web Development:** JSON is commonly used to send data from the server to the client and vice versa in web applications.
 
 ![](https://www.freecodecamp.org/news/content/images/2020/10/image-65.png)
 
+-	**配置文件** JSON也被用于存储配置和设置。例如：为了创建一个[Google Chrome App](https://developer.chrome.com/apps/first_app#one)，你需要包含一个名为`mainfest.json`的JSON文件指定app的名字、简介、当前版本和其他属性设置。
 -   **Configuration files:** JSON is also used to store configurations and settings. For example, to create a [Google Chrome App](https://developer.chrome.com/apps/first_app#one), you need to include a JSON file called `manifest.json` to specify the name of the app, its description, current version, and other properties and settings.  
 
 ![](https://www.freecodecamp.org/news/content/images/2020/10/image-99.png)
 
+## 🔸 JSON结构和格式
+
 ## 🔸 JSON Structure and Format
 
+现在你已经知道了JSON格式的作用了，让我们看一个例子：下面代表一个披萨订单。
 Now that you know what the JSON format is used for, let's see its basic structure with an example that represents the data of a pizza order:
 
 ```JSON
@@ -61,19 +87,28 @@ Now that you know what the JSON format is used for, let's see its basic structur
 }
 ```
 
+Sample .json文件
 Sample .json file
 
+JSON格式的主要特征：
 These are the main characteristics of the JSON format:
 
+
+-	一系列的被`{}`包裹的键值对。
 -   There is a sequence of key-value pairs surrounded by curly brackets `{}`.
+-	使用这种格式，把每一个键（key）映射到特定的值（value）上。
 -   Each key is mapped to a particular value using this format:
+
 
 ```
 "key": <value> 
 ```
 
+💡 **Tip:** 需要用引号包裹的值(values)必须使用双引号(英文双引号)。
+
 💡 **Tip:** The values that require quotes have to be surrounded by double quotes.
 
+-	键值对被逗号分隔开。只有最后一个键值对可以省略逗号。
 -   Key-value pairs are separated by a comma. Only the last pair is not followed by a comma.
 
 ```JSON
@@ -82,6 +117,8 @@ These are the main characteristics of the JSON format:
 	"price": 15.67
 }
 ```
+
+
 
 💡 **Tip:** We typically format JSON with different levels of indentation to make the data easier to read. In this article, you will learn how to add the indentation automatically with Python.
 
